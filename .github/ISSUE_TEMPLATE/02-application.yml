@@ -1,0 +1,97 @@
+name: Отклик
+description: Подготовить или зафиксировать отклик и следующий шаг.
+title: "[Отклик] VAC-0001: компания / должность"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ведите одну карточку отклика от подготовки до результата. Свяжите её с вакансией и строкой CSV.
+        Дату отправки заполняйте после фактической отправки. Резюме и личную переписку храните вне публичного репозитория.
+  - type: input
+    id: vacancy-id
+    attributes:
+      label: ID вакансии
+      placeholder: VAC-0001
+    validations:
+      required: true
+  - type: input
+    id: vacancy-issue
+    attributes:
+      label: Карточка вакансии
+      description: Номер issue с символом решётки или полный URL.
+      placeholder: "#123"
+    validations:
+      required: true
+  - type: dropdown
+    id: status
+    attributes:
+      label: Статус отклика
+      options:
+        - Подготовка отклика
+        - Отклик отправлен
+        - Собеседование
+        - Тестовое задание
+        - Ожидаю решение
+        - Оффер
+        - Принят оффер
+        - Отказ работодателя
+        - Отказ кандидата
+        - Вакансия закрыта
+      default: 0
+    validations:
+      required: true
+  - type: dropdown
+    id: channel
+    attributes:
+      label: Канал отклика
+      options:
+        - Сайт работодателя
+        - hh.ru
+        - Email
+        - Другое
+    validations:
+      required: true
+  - type: input
+    id: applied-on
+    attributes:
+      label: Дата отправки
+      description: YYYY-MM-DD. Обязательно для уже отправленного отклика; при подготовке оставить пустым.
+      placeholder: YYYY-MM-DD
+  - type: textarea
+    id: materials
+    attributes:
+      label: Подготовленные материалы
+      description: Версия резюме, версия письма и акценты под требования. Достаточно названий, без личных данных и вложений.
+      placeholder: Версия резюме; версия письма; какой опыт выделен.
+  - type: textarea
+    id: submission-proof
+    attributes:
+      label: Подтверждение отправки
+      description: Для отправленного отклика укажите краткое подтверждение или номер заявки, без личных данных.
+  - type: textarea
+    id: result
+    attributes:
+      label: Ответ работодателя
+      description: Дата ответа, краткий результат и ссылки на карточки интервью. Если ответа нет, так и укажите.
+  - type: input
+    id: next-action
+    attributes:
+      label: Следующее действие
+      placeholder: Подготовить письмо, отправить отклик или проверить ответ; для завершённого процесса указать «Завершено».
+    validations:
+      required: true
+  - type: input
+    id: next-action-date
+    attributes:
+      label: Срок следующего действия
+      description: YYYY-MM-DD. Для завершённого процесса поле можно оставить пустым.
+      placeholder: YYYY-MM-DD
+  - type: checkboxes
+    id: progress
+    attributes:
+      label: Подготовка и учёт
+      options:
+        - label: Перед откликом проверены актуальность вакансии и условия.
+        - label: Резюме и письмо проверены на соответствие требованиям.
+        - label: Фактическая отправка подтверждена.
+        - label: В таблице обновлены статус, дата отклика, ссылка на карточку и следующий шаг.
