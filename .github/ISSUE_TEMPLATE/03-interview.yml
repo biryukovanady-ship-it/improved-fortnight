@@ -1,0 +1,121 @@
+name: Этап собеседования
+description: Запланировать встречу или задание, записать итог и следующий шаг.
+title: "[Этап] VAC-0001: компания / этап"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Отдельная карточка на каждую встречу или тестовое задание. Используйте ID основной вакансии.
+        Для времени укажите часовой пояс; основной часовой пояс трекера Europe/Saratov, UTC+4.
+  - type: input
+    id: vacancy-id
+    attributes:
+      label: ID вакансии
+      placeholder: VAC-0001
+    validations:
+      required: true
+  - type: input
+    id: vacancy-issue
+    attributes:
+      label: Карточка вакансии
+      placeholder: "#123 или полный URL"
+    validations:
+      required: true
+  - type: input
+    id: application-issue
+    attributes:
+      label: Карточка отклика
+      placeholder: "#124 или полный URL"
+  - type: dropdown
+    id: stage
+    attributes:
+      label: Этап
+      options:
+        - HR
+        - Руководитель
+        - Профильное собеседование
+        - Тестовое задание
+        - Финальное собеседование
+        - Обсуждение оффера
+        - Другое
+    validations:
+      required: true
+  - type: dropdown
+    id: stage-state
+    attributes:
+      label: Состояние этапа
+      options:
+        - Запланирован
+        - Выполняется
+        - Завершён
+        - Перенесён
+        - Отменён
+      default: 0
+    validations:
+      required: true
+  - type: input
+    id: scheduled-for
+    attributes:
+      label: Дата и время или срок задания
+      description: Укажите часовой пояс. Если дата ещё не согласована, напишите «Согласовать».
+      placeholder: YYYY-MM-DD HH:MM, Europe/Saratov (UTC+4)
+    validations:
+      required: true
+  - type: dropdown
+    id: format
+    attributes:
+      label: Формат
+      options:
+        - Видеосвязь
+        - Телефон
+        - Письменное задание
+        - Другое
+    validations:
+      required: true
+  - type: textarea
+    id: preparation
+    attributes:
+      label: Подготовка
+      placeholder: Кейсы и отчёты для обсуждения; вопросы об обязанностях, удалёнке, графике и зарплате; что нужно подготовить.
+  - type: textarea
+    id: result
+    attributes:
+      label: Итог этапа
+      description: Заполняется после этапа. Подтверждённые условия, вопросы и краткий результат без личной переписки и закрытых материалов.
+  - type: dropdown
+    id: decision
+    attributes:
+      label: Решение по результату
+      options:
+        - Пока не определено
+        - Ожидаю решение
+        - Приглашение на следующий этап
+        - Оффер
+        - Принят оффер
+        - Отказ работодателя
+        - Отказ кандидата
+      default: 0
+    validations:
+      required: true
+  - type: input
+    id: next-action
+    attributes:
+      label: Следующее действие
+      placeholder: Подготовить кейсы, сдать задание или проверить решение; для завершённого процесса указать «Завершено».
+    validations:
+      required: true
+  - type: input
+    id: next-action-date
+    attributes:
+      label: Срок следующего действия
+      description: YYYY-MM-DD. Для завершённого процесса поле можно оставить пустым.
+      placeholder: YYYY-MM-DD
+  - type: checkboxes
+    id: progress
+    attributes:
+      label: Учёт этапа
+      options:
+        - label: Дата, время и часовой пояс подтверждены.
+        - label: Подготовка завершена.
+        - label: Итог этапа записан.
+        - label: Ссылка на этап добавлена в карточку вакансии и CSV; статус и следующий шаг обновлены.

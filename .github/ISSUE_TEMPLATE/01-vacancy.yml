@@ -1,0 +1,154 @@
+name: Новая вакансия
+description: Добавить работодателя, ссылку, условия и результат проверки.
+title: "[Вакансия] VAC-0001: компания / должность"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Одна карточка на одну вакансию. Укажите тот же ID, что и в CSV, и замените пример в заголовке.
+        Неизвестные даты и суммы оставьте пустыми. Даты: YYYY-MM-DD.
+  - type: input
+    id: vacancy-id
+    attributes:
+      label: ID вакансии
+      placeholder: VAC-0001
+    validations:
+      required: true
+  - type: input
+    id: company
+    attributes:
+      label: Компания
+      placeholder: Название работодателя
+    validations:
+      required: true
+  - type: input
+    id: role
+    attributes:
+      label: Должность
+      placeholder: Название из объявления
+    validations:
+      required: true
+  - type: input
+    id: vacancy-url
+    attributes:
+      label: URL вакансии
+      description: Прямая ссылка на объявление.
+      placeholder: https://
+    validations:
+      required: true
+  - type: dropdown
+    id: source
+    attributes:
+      label: Тип источника
+      options:
+        - Сайт работодателя
+        - hh.ru
+        - Другое
+    validations:
+      required: true
+  - type: input
+    id: published-on
+    attributes:
+      label: Дата публикации
+      description: Дата первичной публикации по источнику. Если её нет, оставьте поле пустым.
+      placeholder: YYYY-MM-DD
+  - type: textarea
+    id: publication-evidence
+    attributes:
+      label: Подтверждение даты
+      description: Где указана дата; отличайте первичную публикацию от обновления страницы.
+      placeholder: Дата на странице объявления или ссылка на источник; если неизвестна, что нужно проверить.
+  - type: input
+    id: discovered-on
+    attributes:
+      label: Дата обнаружения
+      placeholder: YYYY-MM-DD
+    validations:
+      required: true
+  - type: input
+    id: checked-on
+    attributes:
+      label: Дата проверки
+      placeholder: YYYY-MM-DD
+    validations:
+      required: true
+  - type: textarea
+    id: company-size
+    attributes:
+      label: Численность и источник
+      description: Укажите опубликованное число или диапазон, URL и дату источника. Если данных нет, напишите «Не указано».
+      placeholder: Численность или диапазон; URL; дата источника.
+  - type: textarea
+    id: terms
+    attributes:
+      label: Условия работы
+      placeholder: |
+        Формат работы и доступность удалёнки из РФ:
+        График и часовой пояс:
+        Зарплата, валюта, период выплаты и до/после НДФЛ:
+        Английский:
+        Командировки и посещения офиса:
+    validations:
+      required: true
+  - type: textarea
+    id: requirements
+    attributes:
+      label: Задачи и соответствие опыту
+      description: Основные задачи, обязательные требования, подходящий опыт и пробелы.
+      placeholder: 2-4 основных пункта; что подходит и что требует проверки.
+    validations:
+      required: true
+  - type: dropdown
+    id: fit
+    attributes:
+      label: Соответствие
+      options:
+        - Требует уточнения
+        - Подходит
+        - Не подходит
+      default: 0
+    validations:
+      required: true
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Приоритет
+      options:
+        - Высокий
+        - Средний
+        - Низкий
+      default: 1
+    validations:
+      required: true
+  - type: dropdown
+    id: status
+    attributes:
+      label: Статус
+      options:
+        - Найдена
+        - Проверяется
+        - К отклику
+        - Не подходит
+        - Вакансия закрыта
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Причины и вопросы
+      description: Причина высокого приоритета или несоответствия, исключения из критериев, вопросы работодателю и дополнительные ссылки.
+  - type: textarea
+    id: next-step
+    attributes:
+      label: Следующее действие и срок
+      placeholder: Конкретное действие и дата YYYY-MM-DD. Для завершённой записи укажите причину завершения.
+    validations:
+      required: true
+  - type: checkboxes
+    id: duplicate-check
+    attributes:
+      label: Проверка дубля
+      options:
+        - label: Проверены таблица, открытые и закрытые issues по ссылке, компании и должности.
+          required: true
